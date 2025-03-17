@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -17,7 +18,7 @@
 </div>
 <script>
     //부모 bno
-    //let bno = [[${}]]
+    let bno = [[${boardDTO.bno}]]
     let reply_text = $(".reply_text")
     let reply_writer = $(".reply_writer")
     let reply_registerbtn = $(".reply_registerbtn")
@@ -26,8 +27,10 @@
     
     reply_registerbtn.on("click", function () {
 
+        alert("ddd")
         let insertData = { replyText: reply_text.val() , writer: reply_writer.val() , bno :  bno  }
 
+        console.log(insertData)
         register(insertData)
 
     })

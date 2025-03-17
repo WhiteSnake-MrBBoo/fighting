@@ -40,9 +40,9 @@ public class BoardController {
 
     //Board 읽기 - read
     @GetMapping("/read")
-    public ResponseEntity readGet() {
+    public String readGet() {
 
-        return null;
+        return "board/read";
     }
 
 

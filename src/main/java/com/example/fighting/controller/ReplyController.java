@@ -35,6 +35,10 @@ public class ReplyController {
     @PostMapping("/register")
     public ResponseEntity registerPost(ReplyDTO replyDTO) {
 
+        log.info(replyDTO);
+        log.info(replyDTO);
+        log.info(replyDTO);
+        log.info(replyDTO);
         if(replyDTO.getBno() == null) {
             return new ResponseEntity<String>("잘못된 등록입니다", HttpStatus.BAD_REQUEST);
         }
