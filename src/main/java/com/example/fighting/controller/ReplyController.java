@@ -17,11 +17,11 @@ public class ReplyController {
 
 
     //Reply 등록페이지 보여주기 get방식
-    @GetMapping("/register")
-    public ResponseEntity registerGet() {
-
-        return null;
-    }
+//    @GetMapping("/register")
+//    public ResponseEntity registerGet() {
+//
+//        return null;
+//    }  // rest방식에 불필요 삭제
 
     //Reply 등록페이지 입력
     @PostMapping("/register")
