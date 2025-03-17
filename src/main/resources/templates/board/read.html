@@ -8,7 +8,22 @@
 </head>
 <body>
 
+<[[${boardDTO}]]>
+아이템명 : <input class="item_nm"><br>
+상세설명 : <input class="item_d"><br>
+수량 : <input class="item_count"><br>
+<button class="insertbtn">저장</button>
+
+
+<button class="selectbtn">목록불러오기</button>
+
+
+
 <h2>댓글 등록</h2>
+
+
+
+
 내용 : <input class="reply_text">
 작성자 : <input class="reply_writer">
 <button class="reply_registerbtn">저장</button>
@@ -16,9 +31,9 @@
 <div class="result">
 
 </div>
-<script>
+<script th:inline="javascript">
     //부모 bno
-    let bno = [[${boardDTO.bno}]]
+    let bno = [[${boardDTO.bno}]]   //BoardDTO.bno
     let reply_text = $(".reply_text")
     let reply_writer = $(".reply_writer")
     let reply_registerbtn = $(".reply_registerbtn")

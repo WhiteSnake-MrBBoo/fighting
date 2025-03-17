@@ -14,7 +14,7 @@ public interface BoardService {
 
 
     //목록 - List
-    public List<BoardDTO> getList(String keyword);
+    public List<BoardDTO> getList();
 
     //읽기 - Read
     public BoardDTO read(Long bno);

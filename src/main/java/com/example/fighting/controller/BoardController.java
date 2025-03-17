@@ -8,9 +8,12 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -38,7 +41,7 @@ public class BoardController {
 
         //서비스에서 가져온 저장 메서드
         boardService.resgister(boardDTO);
-        return null;
+        return "board/register";
 
 
     }
@@ -46,14 +49,33 @@ public class BoardController {
 
     //Board 목록  - 리스트
     @GetMapping("/list")
-    public String listGet() {
+    public String listGet(Model model) {
 
-        return null;
+        List<BoardDTO> boardDTOList =
+        boardService.getList();
+
+        model.addAttribute("boardDTOList", boardDTOList);
+
+        return "board/list";
     }
 
     //Board 읽기 - read
     @GetMapping("/read")
-    public String readGet() {
+    public String readGet(Long bno,Model model) {
+        log.info("read진입 : " +bno);
+
+        if(bno == null) {
+            return "redirect:/board/list";
+        }
+
+        BoardDTO boardDTO =
+                boardService.read(bno);
+
+        log.info("Board DTO : 값이 들어 왔니"+boardDTO);
+
+        model.addAttribute("boardDTO", boardDTO);
+
+
 
         return "board/read";
     }
