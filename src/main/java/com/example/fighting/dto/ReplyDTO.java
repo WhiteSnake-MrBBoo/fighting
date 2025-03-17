@@ -17,6 +17,9 @@ public class ReplyDTO {
 
     private Long rno;
 
+    //부모번호 받기위해서
+    private Long bno;
+
     //리플내용
     private String replyText;
 

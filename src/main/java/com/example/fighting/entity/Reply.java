@@ -29,7 +29,8 @@ public class Reply extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "board_bno")
-    private Board boardDTO;
+    private Board board;
+    //boardDTO 에서 board로 변수명 수정
 
 
 
