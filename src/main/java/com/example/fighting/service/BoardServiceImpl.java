@@ -5,10 +5,13 @@ import com.example.fighting.entity.Board;
 import com.example.fighting.repository.BoardRespository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Log4j2
@@ -17,6 +20,8 @@ public class BoardServiceImpl implements BoardService{
 
     @Autowired
     private  final BoardRespository boardRespository ;
+
+    private ModelMapper modelMapper = new ModelMapper();
 
 
     @Override
@@ -36,12 +41,39 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public List<BoardDTO> getList(String keyword) {
-        return List.of();
+    public List<BoardDTO> getList() {
+        //entity 리스트로 받아서 변환 하기
+        List<Board> boardList =
+                boardRespository.findAll();
+
+
+        //DTO 리스트로 변환
+        List<BoardDTO> boardDTOList = new ArrayList<>();
+
+        //entity 리스트로 된걸 리스트로 엔티티에 반환
+        for (Board board:boardList){
+
+            BoardDTO boardDTO1 = modelMapper.map(board,BoardDTO.class);
+
+            boardDTOList.add(boardDTO1);
+
+        }
+
+
+        return boardDTOList;
     }
 
     @Override
     public BoardDTO read(Long bno) {
-        return null;
+        Optional<Board> optionalBoard =
+                boardRespository.findById(bno);
+
+        Board board =
+                optionalBoard.get();
+
+        BoardDTO boardDTO = modelMapper.map(board, BoardDTO.class);
+
+
+        return boardDTO;
     }
 }
