@@ -55,7 +55,7 @@ public class BoardController {
     @GetMapping("/read")
     public String readGet() {
 
-        return null;
+        return "board/read";
     }
 
 

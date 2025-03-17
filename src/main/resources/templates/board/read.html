@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,7 +12,28 @@
 내용 : <input class="reply_text">
 작성자 : <input class="reply_writer">
 <button class="reply_registerbtn">저장</button>
+
+<div class="result">
+
+</div>
 <script>
+    //부모 bno
+    let bno = [[${boardDTO.bno}]]
+    let reply_text = $(".reply_text")
+    let reply_writer = $(".reply_writer")
+    let reply_registerbtn = $(".reply_registerbtn")
+
+    select()
+    
+    reply_registerbtn.on("click", function () {
+
+        alert("ddd")
+        let insertData = { replyText: reply_text.val() , writer: reply_writer.val() , bno :  bno  }
+
+        console.log(insertData)
+        register(insertData)
+
+    })
 
     function select() {
         $.ajax({
@@ -25,15 +47,15 @@
                 let str = "";
                 for( let i = 0; i < data.length; i++ ) {
 
-                    str += `<span> 번호 : ${data[i].num}</span>
-                                <span>이름 : ${data[i].item_nm}</span>
-                                <span>상세설명 : ${data[i].item_d}</span>
-                                <span>수량 : ${data[i].item_count}</span>`
+                    str += `<span> 번호 : ${data[i].rno}</span>
+                                <span>내용 : <b>${data[i].replyText}</b></span>
+                                <span>작성자 : ${data[i].writer}</span>
+                                <span>등록날짜 : ${data[i].regTime}</span><br>`
 
 
                 }
 
-                $(".result").append(str)
+                $(".result").html(str)
 
             }
 
@@ -42,15 +64,14 @@
     }
 
     function register(insertData) {
-        // { item_nm : "마우스"  ,
-        //     item_d : "좋은마우스" ,
-        //     item_count : 3}
+
         $.ajax({
-            url : "http://15.164.225.173/board/register",
-            type : "get",
+            url : "/reply/register",
+            type : "post",
             data : insertData   ,
             success : function (data) {
                 alert(data)
+                select()
             }
 
         })
