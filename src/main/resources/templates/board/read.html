@@ -3,8 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
 
+<h2>댓글 등록</h2>
+내용 : <input class="reply_text">
+작성자 : <input class="reply_writer">
+<button class="reply_registerbtn">저장</button>
+<script>
+
+    function select() {
+        $.ajax({
+
+            url : "/reply/list" ,
+            type : "get" ,
+            success : function (data) {
+
+                console.log(data)
+
+                let str = "";
+                for( let i = 0; i < data.length; i++ ) {
+
+                    str += `<span> 번호 : ${data[i].num}</span>
+                                <span>이름 : ${data[i].item_nm}</span>
+                                <span>상세설명 : ${data[i].item_d}</span>
+                                <span>수량 : ${data[i].item_count}</span>`
+
+
+                }
+
+                $(".result").append(str)
+
+            }
+
+
+        })
+    }
+
+    function register(insertData) {
+        // { item_nm : "마우스"  ,
+        //     item_d : "좋은마우스" ,
+        //     item_count : 3}
+        $.ajax({
+            url : "http://15.164.225.173/board/register",
+            type : "get",
+            data : insertData   ,
+            success : function (data) {
+                alert(data)
+            }
+
+        })
+
+    }
+
+
+</script>
 </body>
 </html>
