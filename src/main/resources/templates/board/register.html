@@ -1,18 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <title>등록게시판</title>
 </head>
 <body>
-<form class="board/register" method="post">
-  제목 : <input class="title">
-  내용 : <input class="content">
-  작성자 : <input class="writer">
-  <button type="submit"> 저장</button>
+<h1>등록:mvc 패턴</h1>
 
+<form class="board/register" method="post" >
+
+  제목 : <input name="title" >
+  내용 : <input name="content">
+  작성자 : <input name="writer">
+  <button type="submit"> 전송확인 하기</button>
 
 </form>
+
+
+<h1>등록: th:object</h1>
+<form action="/board/register" method="post" th:object="${boardDTO}" enctype="multipart/form-data">
+  제목 : <input name="title"  th:field="*{title}"> <br>
+
+  내용 : <input name="content" th:field="*{content}"> <br>
+
+  작성자 : <input name="writer"  th:field="*{writer}"> <br>
+
+
+  <button>확인된 내용 전송 하기</button>
+
+</form>
+
+
+
+
+
 
 
 </body>
