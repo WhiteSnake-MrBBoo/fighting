@@ -39,7 +39,7 @@ public class BoardController {
 
         //서비스에서 가져온 저장 메서드
         boardService.resgister(boardDTO);
-        return "board/register";
+        return "redirect:/board/list";
 
 
     }
