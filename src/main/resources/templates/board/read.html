@@ -53,7 +53,7 @@
     function select() {
         $.ajax({
 
-            url : "/reply/list" ,
+            url : "/reply/list?bno="+bno ,
             type : "get" ,
             success : function (data) {
 

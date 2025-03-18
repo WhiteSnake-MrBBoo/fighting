@@ -51,11 +51,11 @@ public class ReplyController {
 
     //Reply 목록 get방식
     @GetMapping("/list")
-    public ResponseEntity listGet() {
+    public ResponseEntity listGet(Long bno) {
 
 
         List<ReplyDTO> replyDTOList =
-        replyService.list();
+        replyService.list(bno);
 
 
 

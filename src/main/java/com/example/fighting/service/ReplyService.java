@@ -41,10 +41,10 @@ public class ReplyService {
         replyRepository.save(reply);
 
     }
-    public List<ReplyDTO> list(){
+    public List<ReplyDTO> list(Long bno){
 
         List<Reply> replyList =
-        replyRepository.findAll();
+        replyRepository.findByBoardBno(bno);
 
         List<ReplyDTO> replyDTOList = new ArrayList<>();
         if(replyList == null) {
