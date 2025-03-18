@@ -9,13 +9,13 @@
 <body>
 
 <[[${boardDTO}]]>
-아이템명 : <input class="item_nm"><br>
-상세설명 : <input class="item_d"><br>
-수량 : <input class="item_count"><br>
-<button class="insertbtn">저장</button>
+
+    글번호 : <span th:text="${boardDTO.bno}" ></span><br>
+    제목 : <span th:text="${boardDTO.title}" ></span><br>
+    내용 : <span th:text="${boardDTO.content}" ></span><br>
+    작성자 : <span th:text="${boardDTO.writer}" ></span><br>
 
 
-<button class="selectbtn">목록불러오기</button>
 
 
 
