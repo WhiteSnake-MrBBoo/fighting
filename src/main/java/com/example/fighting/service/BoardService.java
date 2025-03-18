@@ -9,8 +9,11 @@ import java.util.List;
 public interface BoardService {
     //Board (게시판)
 
-    //등록 -
+    //등록 - @builder
     public void resgister(BoardDTO boardDTO);
+
+    //등록 - Modelmapper
+    public BoardDTO registerA(BoardDTO boardDTO);
 
 
     //목록 - List

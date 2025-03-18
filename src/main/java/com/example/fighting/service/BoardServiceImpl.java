@@ -24,6 +24,27 @@ public class BoardServiceImpl implements BoardService{
     private ModelMapper modelMapper = new ModelMapper();
 
 
+
+
+
+    @Override
+    public BoardDTO registerA(BoardDTO boardDTO) {
+
+        Board board = modelMapper.map(boardDTO, Board.class);
+
+        board =
+                boardRespository.save(board);
+
+        boardDTO = modelMapper.map(board, BoardDTO.class);
+
+
+
+
+        return boardDTO;
+    }
+
+
+
     @Override
     public void resgister(BoardDTO boardDTO) {
         //Entity 변환 작업
@@ -39,6 +60,8 @@ public class BoardServiceImpl implements BoardService{
 
 
     }
+
+
 
     @Override
     public List<BoardDTO> getList() {
